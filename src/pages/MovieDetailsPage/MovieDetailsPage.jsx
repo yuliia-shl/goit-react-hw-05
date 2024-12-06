@@ -1,5 +1,12 @@
 const MovieDetailsPage = () => {
-  return <div>MovieDetailsPage</div>
+  return (
+    <>
+      <form action="">
+        <input type="text" />
+      </form>
+      <button>Search</button>
+    </>
+  )
 }
 
 export default MovieDetailsPage
