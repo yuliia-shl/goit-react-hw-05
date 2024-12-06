@@ -1,7 +1,17 @@
-import React from "react"
+import { Link } from "react-router-dom"
 
-const MovieList = () => {
-  return <div>MovieList</div>
+const MovieList = ({ trendMovies }) => {
+  return (
+    <>
+      <ul>
+        {trendMovies?.map((trendMovie) => (
+          <li key={trendMovie.id}>
+            <Link>{trendMovie.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  )
 }
 
 export default MovieList

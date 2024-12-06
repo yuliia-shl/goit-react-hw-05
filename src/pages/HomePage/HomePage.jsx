@@ -1,18 +1,10 @@
-// import { Link } from "react-router-dom"
-
-import { Link } from "react-router-dom"
+import MovieList from "../../components/MovieList/MovieList"
 
 const HomePage = ({ trendMovies }) => {
   return (
     <>
       <h1>Trending today</h1>
-      <ul>
-        {trendMovies?.map((trendMovie) => (
-          <li key={trendMovie.id}>
-            <Link>{trendMovie.title}</Link>
-          </li>
-        ))}
-      </ul>
+      <MovieList trendMovies={trendMovies} />
     </>
   )
 }

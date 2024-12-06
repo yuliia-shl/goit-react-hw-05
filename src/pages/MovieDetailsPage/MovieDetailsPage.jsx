@@ -1,10 +1,7 @@
 const MovieDetailsPage = () => {
   return (
     <>
-      <form action="">
-        <input type="text" />
-      </form>
-      <button>Search</button>
+      <p>MovieDetailsPage</p>
     </>
   )
 }
