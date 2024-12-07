@@ -6,7 +6,9 @@ const MovieList = ({ trendMovies }) => {
       <ul>
         {trendMovies?.map((trendMovie) => (
           <li key={trendMovie.id}>
-            <Link>{trendMovie.title}</Link>
+            <Link to={`/movies/${trendMovie.id.toString()}`}>
+              {trendMovie.title}
+            </Link>
           </li>
         ))}
       </ul>
