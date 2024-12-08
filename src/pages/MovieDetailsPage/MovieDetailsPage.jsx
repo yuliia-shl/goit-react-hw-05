@@ -2,11 +2,16 @@ import s from "./MovieDetailsPage.module.css"
 import { useEffect, useState } from "react"
 import { NavLink, Outlet, useParams } from "react-router-dom"
 import { fetchMovieById } from "../../services/api"
+import clsx from "clsx"
+
+const defaultImg =
+  "https://dummyimage.com/400x600/cdcdcd/000.jpg&text=No+poster"
+const buildLinkClass = ({ isActive }) => {
+  return clsx("link", isActive && "active")
+}
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams()
-  // console.log(movieId)
-
   const [movie, setMovie] = useState(null)
   useEffect(() => {
     const getData = async () => {
@@ -22,16 +27,22 @@ const MovieDetailsPage = () => {
 
   return (
     <div className={s.container}>
+      <button className={s.backBtn}>Go Back</button>
       <div className={s.movieWrapper}>
         <img
-          src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+          src={
+            movie.poster_path
+              ? `https://image.tmdb.org/t/p/w500/${movie.poster_path}`
+              : defaultImg
+          }
+          width={250}
           alt="Movie poster"
           className={s.img}
         />
         <div>
           <h2>{movie.title} </h2>
           <p>Release Date: {movie.release_date}</p>
-          <p>Movie Rating: {movie.vote_average}</p>
+          <p>User Score: {Math.ceil(movie.vote_average * 10)}%</p>
           <h3>Overview</h3>
           <p>{movie.overview}</p>
           <h3>Genres</h3>
@@ -45,14 +56,18 @@ const MovieDetailsPage = () => {
           </ul>
         </div>
       </div>
-      <div>
+      <div className={s.infoHeader}>
         <p>Aditional information</p>
         <nav>
-          <NavLink to="cast">Cast</NavLink>
-          <NavLink to="reviews">Reviews</NavLink>
+          <NavLink className={buildLinkClass} to="cast">
+            Cast
+          </NavLink>
+          <NavLink className={buildLinkClass} to="reviews">
+            Reviews
+          </NavLink>
         </nav>
-        <Outlet />
       </div>
+      <Outlet />
     </div>
   )
 }

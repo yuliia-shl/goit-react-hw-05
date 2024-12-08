@@ -1,9 +1,10 @@
 import { NavLink } from "react-router-dom"
 import s from "./Navigation.module.css"
 import clsx from "clsx"
+import "../App.css"
 
 const buildLinkClass = ({ isActive }) => {
-  return clsx(s.link, isActive && s.active)
+  return clsx("link", isActive && "active")
 }
 
 const Navigation = () => {
