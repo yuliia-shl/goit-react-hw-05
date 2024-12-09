@@ -12,8 +12,12 @@ export const MovieCast = () => {
   useEffect(() => {
     if (!movieId) return
     const getData = async () => {
-      const data = await fetchCreditsByMovieId(movieId)
-      setCredits(data)
+      try {
+        const data = await fetchCreditsByMovieId(movieId)
+        setCredits(data)
+      } catch (error) {
+        console.log(error)
+      }
     }
     getData()
   }, [movieId])

@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom"
-import s from "./Navigation.module.css"
 import clsx from "clsx"
 import "../App.css"
 
@@ -10,7 +9,7 @@ const buildLinkClass = ({ isActive }) => {
 const Navigation = () => {
   return (
     <>
-      <nav className={s.nav}>
+      <nav>
         <NavLink className={buildLinkClass} to="/">
           Home
         </NavLink>

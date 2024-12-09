@@ -60,7 +60,7 @@ const MovieDetailsPage = () => {
           </ul>
         </div>
       </div>
-      <div className={s.infoHeader}>
+      <div>
         <p>Aditional information</p>
         <nav>
           <NavLink className={buildLinkClass} to="cast">

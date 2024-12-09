@@ -37,7 +37,6 @@ const MoviesPage = ({ handleSetQuery }) => {
   const filteredMovies = allMovies.filter((movie) =>
     movie.title.toLowerCase().includes(query.toLowerCase())
   )
-  console.log(filteredMovies)
 
   return (
     <>
