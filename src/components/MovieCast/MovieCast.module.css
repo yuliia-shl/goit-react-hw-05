@@ -4,3 +4,18 @@
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.castItem {
+  border: 1px solid grey;
+  width: 240px;
+}
+
+.castImg {
+  align-self: center;
+}
+
+.castItem p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
