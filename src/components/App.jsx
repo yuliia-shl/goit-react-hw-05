@@ -1,10 +1,7 @@
-// import { useState } from "react"
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import "./App.css"
 import HomePage from "../pages/HomePage/HomePage"
 import Navigation from "./Navigation/Navigation"
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes, useSearchParams } from "react-router-dom"
 import MoviesPage from "../pages/MoviesPage/MoviesPage"
 import MovieDetailsPage from "../pages/MovieDetailsPage/MovieDetailsPage"
 import MovieReviews from "./MovieReviews/MovieReviews"
@@ -17,20 +14,24 @@ import { fetchTrendMovies } from "../services/api"
 function App() {
   const [movies, setMovies] = useState([])
   // const [query, setQuery] = useState("")
+  const [searchParams, setSearchParams] = useSearchParams()
 
   useEffect(() => {
     const getData = async () => {
       try {
         const { results } = await fetchTrendMovies()
         setMovies(results)
-        console.log(results)
       } catch (error) {
         console.log(error)
       }
     }
-
     getData()
   }, [])
+
+  const handleSetQuery = (newValue) => {
+    searchParams.set("query", newValue)
+    setSearchParams(searchParams)
+  }
 
   return (
     <>
@@ -40,7 +41,10 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage trendMovies={movies} />}></Route>
-          <Route path="/movies" element={<MoviesPage />} />
+          <Route
+            path="/movies"
+            element={<MoviesPage handleSetQuery={handleSetQuery} />}
+          />
           <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
             <Route path="cast" element={<MovieCast />} />
             <Route path="reviews" element={<MovieReviews />} />

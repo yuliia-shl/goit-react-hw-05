@@ -6,8 +6,8 @@ const API_TOKEN =
 axios.defaults.headers.common["Authorization"] = API_TOKEN
 
 export const fetchTrendMovies = async () => {
-  const response = await axios.get(`/trending/movie/day`)
-  return response.data
+  const { data } = await axios.get(`/trending/movie/day`)
+  return data
 }
 
 export const fetchMovieById = async (id) => {
@@ -22,7 +22,10 @@ export const fetchCreditsByMovieId = async (id) => {
 
 export const fetchReviewsByMovieId = async (id) => {
   const { data } = await axios.get(`/movie/${id}/reviews`)
-  console.log(data.results)
-
   return data.results
+}
+
+export const fetchSearchMovies = async (query) => {
+  const { data } = await axios.get(`/search/movie?query=${query}`)
+  return data
 }
