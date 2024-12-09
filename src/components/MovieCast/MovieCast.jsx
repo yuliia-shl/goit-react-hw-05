@@ -1,11 +1,10 @@
 import s from "./MovieCast.module.css"
-
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import { fetchCreditsByMovieId } from "../../services/api"
 import { defaultImg } from "../../pages/MovieDetailsPage/MovieDetailsPage"
 
-export const MovieCast = () => {
+const MovieCast = () => {
   const { movieId } = useParams()
   const [credits, setCredits] = useState(null)
 
@@ -50,3 +49,5 @@ export const MovieCast = () => {
     </div>
   )
 }
+
+export default MovieCast

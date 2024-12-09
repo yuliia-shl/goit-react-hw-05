@@ -1,5 +1,5 @@
 import s from "./MovieDetailsPage.module.css"
-import { useEffect, useRef, useState } from "react"
+import { Suspense, useEffect, useRef, useState } from "react"
 import { Link, NavLink, Outlet, useLocation, useParams } from "react-router-dom"
 import { fetchMovieById } from "../../services/api"
 import clsx from "clsx"
@@ -71,7 +71,9 @@ const MovieDetailsPage = () => {
           </NavLink>
         </nav>
       </div>
-      <Outlet />
+      <Suspense fallback={<h3>Loading data...</h3>}>
+        <Outlet />
+      </Suspense>
     </div>
   )
 }
