@@ -1,7 +1,7 @@
 import "./App.css"
 import { Route, Routes, useSearchParams } from "react-router-dom"
-import { lazy, Suspense, useEffect, useState } from "react"
-import { fetchTrendMovies } from "../services/api"
+import { lazy, Suspense } from "react"
+
 import Navigation from "./Navigation/Navigation"
 const HomePage = lazy(() => import("../pages/HomePage/HomePage"))
 const MoviesPage = lazy(() => import("../pages/MoviesPage/MoviesPage"))
@@ -13,20 +13,7 @@ const MovieReviews = lazy(() => import("./MovieReviews/MovieReviews"))
 const MovieCast = lazy(() => import("./MovieCast/MovieCast"))
 
 function App() {
-  const [movies, setMovies] = useState([])
   const [searchParams, setSearchParams] = useSearchParams()
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const { results } = await fetchTrendMovies()
-        setMovies(results)
-      } catch (error) {
-        console.log(error)
-      }
-    }
-    getData()
-  }, [])
 
   const handleSetQuery = (newValue) => {
     searchParams.set("query", newValue)
@@ -41,7 +28,7 @@ function App() {
       <main>
         <Suspense fallback={<h3>Loading data...</h3>}>
           <Routes>
-            <Route path="/" element={<HomePage trendMovies={movies} />}></Route>
+            <Route path="/" element={<HomePage />}></Route>
             <Route
               path="/movies"
               element={<MoviesPage handleSetQuery={handleSetQuery} />}
