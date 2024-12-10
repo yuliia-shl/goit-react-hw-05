@@ -19,22 +19,22 @@
 
 Токен доступу повинен долучатися до кожного запиту у вигляді HTTP-заголовка Authorization, ось приклад.
 
-<pre>
-  ```javascript
-  const url = 'https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1';
-  
-  const options = {
+```javascript
+const url =
+  "https://api.themoviedb.org/3/search/movie?include_adult=false&language=en-US&page=1"
+
+const options = {
   headers: {
-  // Замість api_read_access_token вставте свій токен
-  Authorization: 'Bearer api_read_access_token'
-  }
-  };
-  
-  axios.get(url, options)
-  .then(response => console.log(response))
-  .catch(err => console.error(err));
-  ```
-</pre>
+    // Замість api_read_access_token вставте свій токен
+    Authorization: "Bearer api_read_access_token",
+  },
+}
+
+axios
+  .get(url, options)
+  .then((response) => console.log(response))
+  .catch((err) => console.error(err))
+```
 
 Токен доступу отримується з розділу "API Read Access Token" на [сторінці API](https://www.themoviedb.org/settings/api).
 
@@ -42,9 +42,9 @@
 
 Бекенд буде надсилати замість повноцінного посилання на зображення, наприклад для плаката фільму, отакі рядки, тобто просто ім'я файлу.
 
-<pre>
-```javascript 
-/1E5baAaEse26fej7uHcjOgEE2t2.jpg```</pre>
+```javascript
+/1E5baAaEse26fej7uHcjOgEE2t2.jpg
+```
 
 Для складання повного шляху до зображення тобі необхідно ознайомитися з розділом документації, присвяченим цьому питанню.
 
