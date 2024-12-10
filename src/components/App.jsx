@@ -1,5 +1,5 @@
 import "./App.css"
-import { Route, Routes, useSearchParams } from "react-router-dom"
+import { Route, Routes } from "react-router-dom"
 import { lazy, Suspense } from "react"
 
 import Navigation from "./Navigation/Navigation"
@@ -13,13 +13,6 @@ const MovieReviews = lazy(() => import("./MovieReviews/MovieReviews"))
 const MovieCast = lazy(() => import("./MovieCast/MovieCast"))
 
 function App() {
-  const [searchParams, setSearchParams] = useSearchParams()
-
-  const handleSetQuery = (newValue) => {
-    searchParams.set("query", newValue)
-    setSearchParams(searchParams)
-  }
-
   return (
     <>
       <header>
@@ -29,10 +22,7 @@ function App() {
         <Suspense fallback={<h3>Loading data...</h3>}>
           <Routes>
             <Route path="/" element={<HomePage />}></Route>
-            <Route
-              path="/movies"
-              element={<MoviesPage handleSetQuery={handleSetQuery} />}
-            />
+            <Route path="/movies" element={<MoviesPage />} />
             <Route path="/movies/:movieId" element={<MovieDetailsPage />}>
               <Route path="cast" element={<MovieCast />} />
               <Route path="reviews" element={<MovieReviews />} />

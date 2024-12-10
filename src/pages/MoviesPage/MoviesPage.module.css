@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.searchBtn {
+  background-color: #ffa6007c;
+  width: fit-content;
+  padding: 4px 8px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.searchBtn:hover {
+  background-color: #ffa500;
+}
